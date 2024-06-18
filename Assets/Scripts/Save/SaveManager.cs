@@ -2,26 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Scripts.Singleton;
 
-public class SaveManager : MonoBehaviour
+public class SaveManager : Singleton <SaveManager>
 {
+    private SaveSetup saveSetup;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        saveSetup = new SaveSetup();
+        saveSetup.lastLevel = 2;
+        saveSetup.playerName = "jogador";
+    }
+
+
     [NaughtyAttributes.Button]
   private void Save()
     {
-        SaveSetup setup = new SaveSetup();
-        setup.lastLevel = 2;
-        setup.playerName = "jogador";
-
-        string setupToJson=JsonUtility.ToJson(setup,true);
+        
+        string setupToJson=JsonUtility.ToJson(saveSetup,true);
         SaveFile(setupToJson);
 
     }
 
-    private void SaveFile(string json) 
+    public void SaveName(string text)
     {
-        string path = Application.persistentDataPath+ "/save.txt";
+        saveSetup.playerName = text;
+        Save();
+    }
+    public void SaveLastLevel(int level)
+    {
+        saveSetup.lastLevel = level;
+        Save();
+    }
+    private void SaveFile(string json)
+    {
+        string path = Application.persistentDataPath + "/save.txt";
         File.WriteAllText(path, json);
     }
+
+    
+    public void SaveLevelOne(int level)
+    {
+        SaveLastLevel(1);
+    }
+    
 }
 
 [System.Serializable]

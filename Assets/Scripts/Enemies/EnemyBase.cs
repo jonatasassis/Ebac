@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Animation;
 using Boss;
+using UnityEngine.Events;
 
 
 namespace Enemy
@@ -23,6 +24,8 @@ namespace Enemy
         public float startAnimationDuration = 0.2f;
         public Ease startAnimationEase= Ease.OutBack;
 
+        [Header("Events")]
+        public UnityEvent onKillEvent;
 
         private void Awake()
         {
@@ -53,6 +56,7 @@ namespace Enemy
 
         protected virtual void OnKill()
         {
+            
             if (collider != null)
             {
                 collider.enabled= false;
@@ -61,6 +65,7 @@ namespace Enemy
             BossBase.amountKillEnemies++;
             print("matei "+BossBase.amountKillEnemies+" inimigos");
             PlayAnimationByTrigger(AnimationType.DEATH);
+            onKillEvent?.Invoke();
 
         }
 

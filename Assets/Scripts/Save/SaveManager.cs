@@ -4,6 +4,7 @@ using System.IO;
 using UnityEngine;
 using Scripts.Singleton;
 
+
 public class SaveManager : Singleton <SaveManager>
 {
     private SaveSetup saveSetup;
@@ -11,6 +12,7 @@ public class SaveManager : Singleton <SaveManager>
     protected override void Awake()
     {
         base.Awake();
+        DontDestroyOnLoad(gameObject);
         saveSetup = new SaveSetup();
         saveSetup.lastLevel = 2;
         saveSetup.playerName = "jogador";

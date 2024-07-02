@@ -9,13 +9,13 @@ using UnityEngine.PlayerLoop;
 
 public class HealthBase : MonoBehaviour,IDamageable
 {
-    [SerializeField]private float currentLife;
+    [SerializeField]public float currentLife;
     public float startLife;
     public float delayToDestroy = 3f;
     public Action<HealthBase> onDamage;
     public Action <HealthBase>onKill;
     public bool destroyOnKill=false;
-    public List <UIFillUpdater> UIGunUpdate;
+    public List <UIFillUpdater> UILifeUpdate;
     public float damageMultiply = 1f;
 
     public void Awake()
@@ -30,9 +30,9 @@ public class HealthBase : MonoBehaviour,IDamageable
 
     private void UpdateUI()
     {
-        if(UIGunUpdate!=null)
+        if(UILifeUpdate!=null)
         {
-            UIGunUpdate.ForEach(i=>i.UpdateValue((float)currentLife/startLife));
+            UILifeUpdate.ForEach(i=>i.UpdateValue((float)currentLife/startLife));
         }
     }
 

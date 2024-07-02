@@ -14,6 +14,7 @@ public class Player :Singleton<Player>
     private float vSpeed = 0f;
     public float jumpSpeed = 15f;
     private bool jumping;
+    [SerializeField]public static GameObject playerPosition;
 
     [Header("Life")]
     public HealthBase healtPlayer;
@@ -31,6 +32,8 @@ public class Player :Singleton<Player>
     [Header("Clothes")]
     [SerializeField]private ClothChanger clothChanger;
 
+    public float posPlayerY,posPlayerX,posPlayerZ;
+
     private void OnValidate()
     {
         if(healtPlayer==null)
@@ -45,6 +48,7 @@ public class Player :Singleton<Player>
         OnValidate();
         healtPlayer.onDamage += Damage;
         healtPlayer.onKill += OnKill;
+        gameObject.transform.position = SaveManager.Instance.playerPositionToLoad;
 
     }
    
@@ -52,6 +56,11 @@ public class Player :Singleton<Player>
 
     void Update()
     {
+       
+        PlayerPrefs.SetFloat("posPlayerX", transform.position.x);
+        PlayerPrefs.SetFloat("posPlayerY", transform.position.y);
+        PlayerPrefs.SetFloat("posPlayerZ", transform.position.z);
+
         transform.Rotate(0, Input.GetAxis("Horizontal") * (turnSpeed*750) * Time.deltaTime, 0);
         var inputAxisVertical = Input.GetAxis("Vertical");
         var speedVector = -transform.forward * inputAxisVertical * (-speed*10);

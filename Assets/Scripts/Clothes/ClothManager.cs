@@ -25,5 +25,6 @@ namespace Cloth
     {
         public ClothType clothType;
         public Color playerColor;
+       
     }
 }

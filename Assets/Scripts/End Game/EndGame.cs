@@ -1,23 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Content;
 using UnityEngine;
 using DG.Tweening;
 
 public class EndGame : MonoBehaviour
 {
     public List<GameObject> endGameObjects;
-    private bool endGame=false;
+    private bool endGame = false;
     public int currentLevel = 1;
 
     private void Awake()
     {
-        endGameObjects.ForEach(i =>i.SetActive(false));
+        endGameObjects.ForEach(i => i.SetActive(false));
     }
     private void OnTriggerEnter(Collider other)
     {
-        Player p = other.transform.GetComponent<Player>();
+        Player p= other.transform.GetComponent<Player>();
 
-        if (!endGame && p != null)
+        if(!endGame && p!= null)
         {
             ShowEndGame();
         }
@@ -31,8 +32,10 @@ public class EndGame : MonoBehaviour
         foreach(var i in endGameObjects)
         {
             i.SetActive(true);
-            i.transform.DOScale(0, 0.2f).SetEase(Ease.OutBack).From();
-            SaveManager.Instance.SaveLastLevel(currentLevel);
+            i.transform.DOScale(0, .2f).SetEase(Ease.OutBack).From();
+            SaveManager.Instance.SaveLastLevel (2);
+            LoadSceneHelper.levelToLoad = LoadSceneHelper.levelToLoad++;
+            SaveManager.Instance.SaveLastPlayerPosition(new Vector3(442, -7, -76));
         }
     }
 }

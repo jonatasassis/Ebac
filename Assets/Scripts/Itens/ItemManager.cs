@@ -23,8 +23,16 @@ namespace Itens
         void Start()
         {
             Reset();
+            LoadItensFromSave();
+            
         }
 
+        private void LoadItensFromSave()
+        {
+           AddByType(ItemType.COIN,SaveManager.Instance.setup.coins);
+            AddByType(ItemType.LIFE_PACK, SaveManager.Instance.setup.health);
+        }
+       
         private void Reset()
         {
            foreach(var i in itemSetups)

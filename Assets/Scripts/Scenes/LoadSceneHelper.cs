@@ -5,10 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneHelper : MonoBehaviour
 {
-    public static int levelToLoad = 1;
+    public SaveManager saveManager;
+    public static int levelToLoad ;
    public void LoadLevel()
     {
-        
-        SceneManager.LoadScene(levelToLoad);
+        saveManager.Load();
+        SceneManager.LoadScene(SaveManager.Instance.lastLevel);
     }
+
+   
 }

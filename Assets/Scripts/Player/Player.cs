@@ -50,9 +50,13 @@ public class Player :Singleton<Player>
         healtPlayer.onKill += OnKill;
         gameObject.transform.position = SaveManager.Instance.playerPositionToLoad;
 
-    }
-   
 
+    }
+
+    private void Start()
+    {
+        
+    }
 
     void Update()
     {

@@ -22,6 +22,8 @@ public class SaveManager : Singleton<SaveManager>
     {
         base.Awake();
         DontDestroyOnLoad(gameObject);
+
+        
         
     }
 
@@ -83,7 +85,7 @@ public class SaveManager : Singleton<SaveManager>
         File.WriteAllText(path, json);
     }
     [NaughtyAttributes.Button]
-    private void Load()
+    public void Load()
     {
         string fileLoaded = "";
         if(File.Exists(path))

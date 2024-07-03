@@ -15,7 +15,7 @@ public class HealthBase : MonoBehaviour,IDamageable
     public Action<HealthBase> onDamage;
     public Action <HealthBase>onKill;
     public bool destroyOnKill=false;
-    public List <UIFillUpdater> UILifeUpdate;
+    public List <UIFillUpdateLife> UILifeUpdate;
     public float damageMultiply = 1f;
 
     public void Awake()

@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class GunBase : MonoBehaviour
 {
+    public SFXType sfxType;
     public ProjectilBase prefabProjectil;
     public Transform posInicialTiro;
     public float delayTiro;
@@ -15,6 +16,7 @@ public class GunBase : MonoBehaviour
 
     public virtual void Atirar()
     {
+        PlaySFX();
         var projectil = Instantiate(prefabProjectil);
         projectil.transform.position= posInicialTiro.position;
         projectil.transform.rotation= posInicialTiro.rotation;
@@ -46,5 +48,10 @@ public class GunBase : MonoBehaviour
             StopCoroutine(coroutineAtual);
 
         }
+    }
+
+    private void PlaySFX()
+    {
+        SFXPool.Instance.Play(sfxType);
     }
 }

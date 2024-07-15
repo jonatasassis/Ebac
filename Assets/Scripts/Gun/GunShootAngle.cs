@@ -7,6 +7,7 @@ public class GunShootAngle : GunShootLimits
 {
     public int amountPerShoot = 4;
     public float angle = 15;
+   
 
     public override void Atirar()
     {
@@ -19,6 +20,7 @@ public class GunShootAngle : GunShootLimits
             {
                 mult++;
             }
+            
             var projectile = Instantiate(prefabProjectil, posInicialTiro);
 
             projectile.transform.localPosition = Vector3.zero;
@@ -29,4 +31,6 @@ public class GunShootAngle : GunShootLimits
 
         }
     }
+
+    
 }

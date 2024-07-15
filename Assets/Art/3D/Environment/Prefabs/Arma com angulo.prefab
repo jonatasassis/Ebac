@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 454d6cb62c796c0468ca98ef685f461a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sfxType: 2
   prefabProjectil: {fileID: 3897176386433414638, guid: 47a1d1f1646a130419c039a0cca9a23b, type: 3}
   posInicialTiro: {fileID: 5572753211584918624}
   delayTiro: 1

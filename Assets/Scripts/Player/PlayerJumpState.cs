@@ -7,6 +7,7 @@ public class PlayerJumpState : PlayerBaseState
 {
     public GameObject player;
     public bool canJump = false;
+    public SFXType sfxType;
 
 
     public override void EnterState(PlayerStateManager player)
@@ -18,6 +19,7 @@ public class PlayerJumpState : PlayerBaseState
     {
         if (canJump == true)
         {
+            PlaySFX();
             player.transform.DOMoveY(12, 2);
             canJump = false;
         }
@@ -27,5 +29,8 @@ public class PlayerJumpState : PlayerBaseState
         }
 
     }
-    
+    private void PlaySFX()
+    {
+        SFXPool.Instance.Play(sfxType);
+    }
 }

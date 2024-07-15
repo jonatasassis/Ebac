@@ -2,11 +2,11 @@
     "lastLevel": 1,
     "playerName": "jogador",
     "lastPlayerPosition": {
-        "x": 444.0746765136719,
-        "y": -7.867072105407715,
-        "z": 286.558837890625
+        "x": 444.66705322265627,
+        "y": -7.867069244384766,
+        "z": 286.259765625
     },
     "coins": 17,
-    "health": 1,
+    "health": 2,
     "playerCurrentLife": 5.0
 }

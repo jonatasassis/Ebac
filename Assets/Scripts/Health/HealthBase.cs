@@ -9,6 +9,7 @@ using UnityEngine.PlayerLoop;
 
 public class HealthBase : MonoBehaviour,IDamageable
 {
+    public SFXType sfxType;
     [SerializeField]public float currentLife;
     public float startLife;
     public float delayToDestroy = 3f;
@@ -60,8 +61,8 @@ public class HealthBase : MonoBehaviour,IDamageable
 
         public void Damage(float f)
     {
-      
-        
+
+        PlaySFX();
         currentLife -= f*damageMultiply;
 
         if (currentLife <= 0)
@@ -88,5 +89,10 @@ public class HealthBase : MonoBehaviour,IDamageable
         yield return new WaitForSeconds(duration);
         this.damageMultiply = 1;
 
+    }
+
+    private void PlaySFX()
+    {
+        SFXPool.Instance.Play(sfxType);
     }
 }

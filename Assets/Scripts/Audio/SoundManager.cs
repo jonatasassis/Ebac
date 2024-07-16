@@ -26,6 +26,8 @@ public class SoundManager : Singleton<SoundManager>
     {
         return sfxSetups.Find(i => i.sfxType == sfxType);
     }
+
+
 }
 
 
@@ -56,3 +58,4 @@ public class SFXSetup
     public SFXType sfxType;
     public AudioClip sfxAudioClip;
 }
+

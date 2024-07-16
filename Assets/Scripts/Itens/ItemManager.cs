@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Scripts.Singleton;
-using UnityEditor.PackageManager.Requests;
+//using UnityEditor.PackageManager.Requests;
 
 namespace Itens
 {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class MusicPlayer : MonoBehaviour
 {
@@ -19,5 +20,12 @@ public class MusicPlayer : MonoBehaviour
         currentMusicSetup= SoundManager.Instance.GetMusicByType(musicType);
         audioSource.clip=currentMusicSetup.audioClip;
         audioSource.Play();
+    }
+
+    public void Mute()
+    {
+        audioSource.volume = 0;
+      
+        
     }
 }
